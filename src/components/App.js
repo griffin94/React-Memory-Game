@@ -1,33 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyle from "./GlobalStyles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home";
 import Game from "./Game";
+import SelectLevel from "./SelectLevel";
 
-const levels = {
-  1: {
-    rows: 2,
-    cols: 2,
-  },
-  2: {
-    rows: 2,
-    cols: 3,
-  },
-  3: {
-    rows: 3,
-    cols: 4,
-  },
-  4: {
-    rows: 4,
-    cols: 4,
-  },
+const player = {
+  nickname: "player1",
+  progress: [
+    {
+      level: 1,
+      passed: true,
+      score: 5,
+    },
+    {
+      level: 2,
+      passed: true,
+      score: 15,
+    },
+    {
+      level: 3,
+      passed: false,
+      score: null,
+    },
+    {
+      level: 4,
+      passed: false,
+      score: null,
+    },
+    {
+      level: 5,
+      passed: false,
+      score: null,
+    },
+    {
+      level: 6,
+      passed: false,
+      score: null,
+    },
+  ],
 };
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <GlobalStyle />
-      <Game level={levels["1"]} />
+    <div>
+      <Router>
+        <GlobalStyle />
+        <Switch>
+          <Route exact path='/React-Memory-Game'>
+            <Home />
+          </Route>
+          <Route exact path='/React-Memory-Game/levels'>
+            <SelectLevel player={player} />
+          </Route>
+          <Route exact path='/React-Memory-Game/game/:level'>
+            <Game />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;

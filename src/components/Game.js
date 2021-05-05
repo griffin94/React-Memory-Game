@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import levelsData from "./../data/levelsData";
 
-function Game({ level }) {
+function Game() {
+  const { level } = useParams();
   const [cards, setCards] = useState([]);
   const [clicks, setClicks] = useState(0);
-  const { rows, cols } = level;
+  const { rows, cols } = levelsData[level];
   const cardsAmount = rows * cols;
 
   useEffect(() => {
@@ -130,7 +133,6 @@ function Game({ level }) {
 export default Game;
 
 const Wrapper = styled.div`
-  width: 100vw;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
