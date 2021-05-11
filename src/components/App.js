@@ -5,50 +5,49 @@ import Home from "./Home";
 import Game from "./Game";
 import SelectLevel from "./SelectLevel";
 
-const player = {
-  nickname: "player1",
-  progress: [
-    {
-      level: 1,
-      passed: true,
-      score: 5,
-    },
-    {
-      level: 2,
-      passed: true,
-      score: 15,
-    },
-    {
-      level: 3,
-      passed: false,
-      score: null,
-    },
-    {
-      level: 4,
-      passed: false,
-      score: null,
-    },
-    {
-      level: 5,
-      passed: false,
-      score: null,
-    },
-    {
-      level: 6,
-      passed: false,
-      score: null,
-    },
-  ],
-};
-
 const App = () => {
+  const [player, setPlayer] = useState({
+    nickname: "",
+    progress: [
+      {
+        level: 1,
+        passed: false,
+        score: null,
+      },
+      {
+        level: 2,
+        passed: false,
+        score: null,
+      },
+      {
+        level: 3,
+        passed: false,
+        score: null,
+      },
+      {
+        level: 4,
+        passed: false,
+        score: null,
+      },
+      {
+        level: 5,
+        passed: false,
+        score: null,
+      },
+      {
+        level: 6,
+        passed: false,
+        score: null,
+      },
+    ],
+  });
   return (
-    <div>
+    <div className='App'>
       <Router>
         <GlobalStyle />
         <Switch>
           <Route exact path='/React-Memory-Game'>
-            <Home />
+            <Home player={player} />
           </Route>
           <Route exact path='/React-Memory-Game/levels'>
             <SelectLevel player={player} />
