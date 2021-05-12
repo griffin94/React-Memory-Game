@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.js": "/React-Memory-Game/static/js/main.0b33ca0f.chunk.js",
-    "main.js.map": "/React-Memory-Game/static/js/main.0b33ca0f.chunk.js.map",
+    "main.js": "/React-Memory-Game/static/js/main.8d9e1b0d.chunk.js",
+    "main.js.map": "/React-Memory-Game/static/js/main.8d9e1b0d.chunk.js.map",
     "runtime-main.js": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js",
     "runtime-main.js.map": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js.map",
-    "static/js/2.9fdc6d5e.chunk.js": "/React-Memory-Game/static/js/2.9fdc6d5e.chunk.js",
-    "static/js/2.9fdc6d5e.chunk.js.map": "/React-Memory-Game/static/js/2.9fdc6d5e.chunk.js.map",
+    "static/js/2.e0b7ed6a.chunk.js": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js",
+    "static/js/2.e0b7ed6a.chunk.js.map": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js.map",
     "index.html": "/React-Memory-Game/index.html",
-    "static/js/2.9fdc6d5e.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.9fdc6d5e.chunk.js.LICENSE.txt",
+    "static/js/2.e0b7ed6a.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js.LICENSE.txt",
+    "static/media/button-plus-hover.bf7fe888.png": "/React-Memory-Game/static/media/button-plus-hover.bf7fe888.png",
+    "static/media/button-plus.38f15a9f.png": "/React-Memory-Game/static/media/button-plus.38f15a9f.png",
     "static/media/button-start-hover.867264d5.png": "/React-Memory-Game/static/media/button-start-hover.867264d5.png",
     "static/media/button-start.6ff5d47d.png": "/React-Memory-Game/static/media/button-start.6ff5d47d.png",
     "static/media/levelicon.c089b3bb.png": "/React-Memory-Game/static/media/levelicon.c089b3bb.png",
@@ -17,7 +19,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e9a1fa2d.js",
-    "static/js/2.9fdc6d5e.chunk.js",
-    "static/js/main.0b33ca0f.chunk.js"
+    "static/js/2.e0b7ed6a.chunk.js",
+    "static/js/main.8d9e1b0d.chunk.js"
   ]
 }
