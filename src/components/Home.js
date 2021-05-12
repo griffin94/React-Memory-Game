@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import withScale from "./withScale";
 import StartGameBtn from "./../assets/button-start.png";
 import StartGameBtnHover from "./../assets/button-start-hover.png";
+import AddBtn from "./../assets/button-plus.png";
+import AddBtnHover from "./../assets/button-plus-hover.png";
 import HomeScreen from "./../assets/title.png";
 
-const Home = ({ player, scale }) => {
+const Home = ({ player, setUserData, scale }) => {
+  const [textField, setTextField] = useState({ value: "", error: false });
   const history = useHistory();
+
   const goToSelectLevel = () => {
     history.push("/React-Memory-Game/levels");
+  };
+
+  const formatter = () => {
+    const formattedValue =
+      textField.value.trim().charAt(0).toUpperCase() +
+      textField.value.trim().slice(1);
+
+    formattedValue
+      ? setTextField({ value: formattedValue, error: false })
+      : setTextField({ value: formattedValue, error: true });
+  };
+
+  const addUserNickname = () => {
+    if (textField.value) {
+      setTextField({ ...textField, error: false });
+      setUserData(textField.value);
+    } else {
+      setTextField({ ...textField, error: true });
+    }
   };
 
   return (
@@ -18,9 +41,26 @@ const Home = ({ player, scale }) => {
         <Title>
           <span>M</span>emory&nbsp;<span>G</span>ame
         </Title>
-        <NickName>{player.nickname}</NickName>
-        <Input type='text' placeholder='Wpisz swój nick' />
-        <Button onClick={goToSelectLevel} />
+        {player.nickname ? (
+          <>
+            <NickName>Cześć {player.nickname}!</NickName>
+            <Button variant='StartGameBtn' onClick={goToSelectLevel} />
+          </>
+        ) : (
+          <>
+            <Input
+              type='text'
+              placeholder='Wpisz swój nick...'
+              value={textField.value}
+              error={textField.error}
+              onChange={(e) =>
+                setTextField({ ...textField, value: e.target.value })
+              }
+              onBlur={formatter}
+            />
+            <Button variant='AddBtn' onClick={addUserNickname} />
+          </>
+        )}
       </Wrapper>
     </Page>
   );
@@ -70,12 +110,16 @@ const Title = styled.h1`
   }
 `;
 
-const NickName = styled.h2``;
+const NickName = styled.h2`
+  font-size: 50px;
+  color: #af753b;
+  text-shadow: 0px 0px 2px black;
+`;
 
 const Input = styled.input`
   width: 363px;
   height: 60px;
-  border: 6px solid #af753b;
+  border: ${(props) => (props.error ? "6px solid red" : "6px solid #af753b")};
   border-radius: 12px;
   background: transparent;
   padding: 10px 5px;
@@ -92,10 +136,31 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 363px;
-  height: 178px;
+  width: ${({ variant }) => {
+    switch (true) {
+      case variant === "AddBtn":
+        return "88px";
+      case variant === "StartGameBtn":
+        return "363px";
+    }
+  }};
+  height: ${({ variant }) => {
+    switch (true) {
+      case variant === "AddBtn":
+        return "88px";
+      case variant === "StartGameBtn":
+        return "178px";
+    }
+  }};
   background-color: transparent;
-  background-image: ${`url(${StartGameBtn})`};
+  background-image: ${({ variant }) => {
+    switch (true) {
+      case variant === "AddBtn":
+        return `url(${AddBtn})`;
+      case variant === "StartGameBtn":
+        return `url(${StartGameBtn})`;
+    }
+  }};
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -105,6 +170,13 @@ const Button = styled.button`
   :hover,
   :focus {
     outline: none;
-    background-image: ${`url(${StartGameBtnHover})`};
+    background-image: ${({ variant }) => {
+      switch (true) {
+        case variant === "AddBtn":
+          return `url(${AddBtnHover})`;
+        case variant === "StartGameBtn":
+          return `url(${StartGameBtnHover})`;
+      }
+    }};
   }
 `;
