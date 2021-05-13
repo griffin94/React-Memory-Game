@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/React-Memory-Game/static/js/main.8d9e1b0d.chunk.js",
-    "main.js.map": "/React-Memory-Game/static/js/main.8d9e1b0d.chunk.js.map",
+    "main.js": "/React-Memory-Game/static/js/main.cbd05059.chunk.js",
+    "main.js.map": "/React-Memory-Game/static/js/main.cbd05059.chunk.js.map",
     "runtime-main.js": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js",
     "runtime-main.js.map": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js.map",
-    "static/js/2.e0b7ed6a.chunk.js": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js",
-    "static/js/2.e0b7ed6a.chunk.js.map": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js.map",
+    "static/js/2.2f488a50.chunk.js": "/React-Memory-Game/static/js/2.2f488a50.chunk.js",
+    "static/js/2.2f488a50.chunk.js.map": "/React-Memory-Game/static/js/2.2f488a50.chunk.js.map",
     "index.html": "/React-Memory-Game/index.html",
-    "static/js/2.e0b7ed6a.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.e0b7ed6a.chunk.js.LICENSE.txt",
+    "static/js/2.2f488a50.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.2f488a50.chunk.js.LICENSE.txt",
     "static/media/button-plus-hover.bf7fe888.png": "/React-Memory-Game/static/media/button-plus-hover.bf7fe888.png",
     "static/media/button-plus.38f15a9f.png": "/React-Memory-Game/static/media/button-plus.38f15a9f.png",
     "static/media/button-start-hover.867264d5.png": "/React-Memory-Game/static/media/button-start-hover.867264d5.png",
@@ -15,11 +15,12 @@
     "static/media/levelicon.c089b3bb.png": "/React-Memory-Game/static/media/levelicon.c089b3bb.png",
     "static/media/leveliconhover.2e9da042.png": "/React-Memory-Game/static/media/leveliconhover.2e9da042.png",
     "static/media/levelselectscreen.a4eb90f8.png": "/React-Memory-Game/static/media/levelselectscreen.a4eb90f8.png",
+    "static/media/result-screen-win.feff81c6.png": "/React-Memory-Game/static/media/result-screen-win.feff81c6.png",
     "static/media/title.c26b316f.png": "/React-Memory-Game/static/media/title.c26b316f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e9a1fa2d.js",
-    "static/js/2.e0b7ed6a.chunk.js",
-    "static/js/main.8d9e1b0d.chunk.js"
+    "static/js/2.2f488a50.chunk.js",
+    "static/js/main.cbd05059.chunk.js"
   ]
 }
