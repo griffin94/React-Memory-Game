@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import levelsData from "./../data/levelsData";
+import Modal from "./Modal";
 
 function Game() {
-  const { level } = useParams();
   const [cards, setCards] = useState([]);
   const [clicks, setClicks] = useState(0);
+  const [gameEnd, setGameEnd] = useState(false);
+  const { level } = useParams();
   const { rows, cols } = levelsData[level];
   const cardsAmount = rows * cols;
+  const playTime = useRef(null);
 
   useEffect(() => {
     init();
@@ -20,6 +23,7 @@ function Game() {
           clickHandler: true,
         }))
       );
+      playTime.current = { startTime: new Date().getTime() };
     }, 1000);
   }, []);
 
@@ -67,7 +71,7 @@ function Game() {
 
   const clickHandler = (e) => {
     const currentClicks = clicks + 1;
-    const newCardsState = cards.map((card) => {
+    const stateWithVisibleCards = cards.map((card) => {
       if (card.id == e.target.id) {
         return { ...card, visible: true, clickHandler: false };
       } else {
@@ -77,35 +81,48 @@ function Game() {
 
     if (currentClicks === 1 || currentClicks === 2) {
       setClicks(currentClicks);
-      setCards(newCardsState);
-      currentClicks === 2 && checkAreCardsEqual(newCardsState);
+      setCards(stateWithVisibleCards);
+      currentClicks === 2 && checkAreCardsEqual(stateWithVisibleCards);
     }
   };
 
-  const checkAreCardsEqual = (newCardsState) => {
-    const visibleCards = newCardsState.filter((card) => card.visible);
+  const checkAreCardsEqual = (stateWithVisibleCards) => {
+    const onlyVisibleCards = stateWithVisibleCards.filter(
+      (card) => card.visible
+    );
     const result =
-      visibleCards[0].background === visibleCards[1].background ? true : false;
+      onlyVisibleCards[0].background === onlyVisibleCards[1].background
+        ? true
+        : false;
 
     setTimeout(() => {
-      setCards(
-        newCardsState.map((card) => {
-          if (card.visible && result) {
-            return {
-              ...card,
-              clickHandler: false,
-              visible: false,
-              active: false,
-            };
-          } else if (card.visible && !result) {
-            return { ...card, clickHandler: true, visible: false };
-          } else {
-            return card;
-          }
-        })
-      );
+      const stateAfterCompare = stateWithVisibleCards.map((card) => {
+        if (card.visible && result) {
+          return {
+            ...card,
+            clickHandler: false,
+            visible: false,
+            active: false,
+          };
+        } else if (card.visible && !result) {
+          return { ...card, clickHandler: true, visible: false };
+        } else {
+          return card;
+        }
+      });
+
+      setCards(stateAfterCompare);
       setClicks(0);
+      const activeCards = stateAfterCompare.filter((card) => card.active);
+      !activeCards.length && handleGameEnd();
     }, 1000);
+  };
+
+  const handleGameEnd = () => {
+    playTime.current.endTime = new Date().getTime();
+    playTime.current.score =
+      (playTime.current.endTime - playTime.current.startTime) / 1000;
+    setTimeout(() => setGameEnd(true), 400);
   };
 
   return (
@@ -126,6 +143,14 @@ function Game() {
           onClick={card.clickHandler ? clickHandler : undefined}
         />
       ))}
+      {gameEnd && (
+        <Modal
+          width={612}
+          height={884}
+          level={level}
+          score={playTime.current.score}
+        />
+      )}
     </Wrapper>
   );
 }

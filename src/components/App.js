@@ -59,10 +59,15 @@ const App = () => {
         <GlobalStyle />
         <Switch>
           <Route exact path='/React-Memory-Game'>
-            <Home player={player} setUserData={setUserData} />
+            <Home
+              player={player}
+              setUserData={setUserData}
+              width={1273}
+              height={716}
+            />
           </Route>
           <Route exact path='/React-Memory-Game/levels'>
-            <SelectLevel player={player} />
+            <SelectLevel player={player} width={1273} height={716} />
           </Route>
           <Route exact path='/React-Memory-Game/game/:level'>
             <Game />

@@ -4,8 +4,8 @@ const withScale = (WrappedComponent) => {
   const WithScale = (props) => {
     const [scale, setScale] = useState(() => {
       const scale = Math.min(
-        window.innerWidth / 1273,
-        window.innerHeight / 716
+        window.innerWidth / props.width,
+        window.innerHeight / props.height
       );
       return scale > 1 ? 1 : scale;
     });
@@ -19,8 +19,8 @@ const withScale = (WrappedComponent) => {
 
     const calculateScale = (e) => {
       const scale = Math.min(
-        window.innerWidth / 1273,
-        window.innerHeight / 716
+        window.innerWidth / props.width,
+        window.innerHeight / props.height
       );
       setScale(scale > 1 ? 1 : scale);
     };

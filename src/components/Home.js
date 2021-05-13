@@ -119,7 +119,8 @@ const NickName = styled.h2`
 const Input = styled.input`
   width: 363px;
   height: 60px;
-  border: ${(props) => (props.error ? "6px solid red" : "6px solid #af753b")};
+  border: ${(props) =>
+    props.error ? "6px solid #AE3328" : "6px solid #af753b"};
   border-radius: 12px;
   background: transparent;
   padding: 10px 5px;
