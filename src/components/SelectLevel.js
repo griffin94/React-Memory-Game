@@ -13,7 +13,7 @@ const SelectLevel = ({ scale }) => {
   const { player } = useContext(PlayerContext);
 
   const goToGame = (e) => {
-    history.push(`/React-Memory-Game/game/${e.target.id}`);
+    history.push(`/game/${e.target.id}`);
   };
   return (
     <Page>

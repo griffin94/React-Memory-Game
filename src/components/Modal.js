@@ -23,7 +23,7 @@ const Modal = ({ scale, level, score }) => {
 
   const clickHandler = () => {
     setUserData({ ...player, progress: updatedProgressArray });
-    push("/React-Memory-Game");
+    push("/");
   };
 
   return (

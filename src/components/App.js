@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GlobalStyle from "./GlobalStyles";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Game from "./Game";
 import SelectLevel from "./SelectLevel";
@@ -71,16 +71,16 @@ const App = () => {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route exact path='/React-Memory-Game'>
+          <Route exact path='/'>
             <Home width={1273} height={716} />
           </Route>
-          <Route exact path='/React-Memory-Game/levels'>
+          <Route exact path='/levels'>
             <SelectLevel player={player} width={1273} height={716} />
           </Route>
-          <Route exact path='/React-Memory-Game/game/:level'>
+          <Route exact path='/game/:level'>
             <Game />
           </Route>
-          <Route exact path='/React-Memory-Game/scores'>
+          <Route exact path='/scores'>
             <Scores width={1273} height={716} />
           </Route>
         </Switch>

@@ -15,11 +15,11 @@ const Home = ({ scale }) => {
   const progress = player.progress.filter((item) => item.passed).length;
 
   const goToSelectLevel = () => {
-    history.push("/React-Memory-Game/levels");
+    history.push("/levels");
   };
 
   const goToScores = () => {
-    history.push("/React-Memory-Game/scores");
+    history.push("/scores");
   };
 
   const formatter = () => {
