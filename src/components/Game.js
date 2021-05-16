@@ -9,7 +9,7 @@ function Game() {
   const [clicks, setClicks] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
   const { level } = useParams();
-  const { rows, cols } = levelsData[level];
+  const { rows, cols } = levelsData[`lev${level}`];
   const cardsAmount = rows * cols;
   const playTime = useRef(null);
 

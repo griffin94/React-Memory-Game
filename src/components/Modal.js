@@ -1,16 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { PlayerContext } from "./App";
 import withScale from "./withScale";
 import resultScreen from "./../assets/result-screen-win.png";
+import Button from "./UI/Button";
+import squareBtn from "./../assets/squareBtn.png";
+import squareBtnHover from "./../assets/squareBtnHover.png";
 
 const Modal = ({ scale, level, score }) => {
+  const { player, setUserData } = useContext(PlayerContext);
+  const { push } = useHistory();
+  const updatedProgressArray = player.progress.map((item) => {
+    if (item.level === Number(level)) {
+      return { ...item, passed: true, score: score };
+    } else if (item.level === Number(level) + 1) {
+      return { ...item, available: true };
+    } else {
+      return item;
+    }
+  });
+
+  const clickHandler = () => {
+    setUserData({ ...player, progress: updatedProgressArray });
+    push("/React-Memory-Game");
+  };
+
   return (
     <Page>
       <Wrapper scale={scale}>
-        <Title>Gratulacje!</Title>
-        <p>Poziom {level.slice(-1)} został ukończony</p>
-        <p>Twój wynik to:</p>
-        <p>{score}</p>
+        <Content>
+          <Title>Gratulacje!</Title>
+          <Text>Poziom {level} został ukończony</Text>
+          <Text>Twój wynik to: {score}</Text>
+          <Button
+            onClick={clickHandler}
+            variant={"square"}
+            image={squareBtn}
+            hoverImage={squareBtnHover}
+          >
+            OK
+          </Button>
+        </Content>
       </Wrapper>
     </Page>
   );
@@ -40,7 +71,14 @@ const Wrapper = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+`;
+
+const Content = styled.div`
+  position: absolute;
   display: flex;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -57,4 +95,11 @@ const Title = styled.h1`
   span {
     color: #94bd00;
   }
+`;
+
+const Text = styled.p`
+  font-size: 24px;
+  font-weight: 500;
+  color: #af753b;
+  text-shadow: 0px 0px 1px black;
 `;

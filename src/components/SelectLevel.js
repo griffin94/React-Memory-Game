@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { PlayerContext } from "./App";
 import withScale from "./withScale";
 import LevelSelectScreen from "./../assets/levelselectscreen.png";
-import LevelIcon from "./../assets/levelicon.png";
-import LevelIconHover from "./../assets/leveliconhover.png";
+import squareBtn from "./../assets/squareBtn.png";
+import squareBtnHover from "./../assets/squareBtnHover.png";
+import Button from "./UI/Button";
 
-const SelectLevel = ({ player, scale }) => {
+const SelectLevel = ({ scale }) => {
   const history = useHistory();
+  const { player } = useContext(PlayerContext);
 
   const goToGame = (e) => {
     history.push(`/React-Memory-Game/game/${e.target.id}`);
@@ -16,11 +19,15 @@ const SelectLevel = ({ player, scale }) => {
     <Page>
       <Wrapper scale={scale}>
         <Levels amount={Math.ceil(player.progress.length / 2)}>
-          {player.progress.map((level) => (
+          {player.progress.map((level, index) => (
             <Button
               key={level.level}
-              id={`lev${level.level}`}
-              onClick={goToGame}
+              id={level.level}
+              onClick={player.progress[index].available ? goToGame : undefined}
+              variant={"square"}
+              image={squareBtn}
+              hoverImage={squareBtnHover}
+              disabled={!player.progress[index].available}
             >
               {level.level}
             </Button>
@@ -63,26 +70,4 @@ const Levels = styled.div`
   width: ${(props) => props.amount * 176}px;
   display: flex;
   flex-wrap: wrap;
-`;
-
-const Button = styled.button`
-  font-size: 60px;
-  font-weight: bold;
-  color: #af753b;
-  text-shadow: 0px 0px 2px black;
-  width: 176px;
-  height: 176px;
-  background-color: transparent;
-  background-image: ${`url(${LevelIcon})`};
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  transition: background-image 0.2s linear;
-  :hover,
-  :focus {
-    outline: none;
-    background-image: ${`url(${LevelIconHover})`};
-  }
 `;

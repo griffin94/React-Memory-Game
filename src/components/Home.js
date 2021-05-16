@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { PlayerContext } from "./App";
 import withScale from "./withScale";
-import StartGameBtn from "./../assets/button-start.png";
-import StartGameBtnHover from "./../assets/button-start-hover.png";
-import AddBtn from "./../assets/button-plus.png";
-import AddBtnHover from "./../assets/button-plus-hover.png";
+import rectangleBtn from "./../assets/rectangleBtn.png";
+import rectangleBtnHover from "./../assets/rectangleBtnHover.png";
 import HomeScreen from "./../assets/title.png";
+import Button from "./UI/Button";
 
-const Home = ({ player, setUserData, scale }) => {
+const Home = ({ scale }) => {
   const [textField, setTextField] = useState({ value: "", error: false });
+  const { player, setUserData, resetData } = useContext(PlayerContext);
   const history = useHistory();
+  const progress = player.progress.filter((item) => item.passed).length;
 
   const goToSelectLevel = () => {
     history.push("/React-Memory-Game/levels");
+  };
+
+  const goToScores = () => {
+    history.push("/React-Memory-Game/scores");
   };
 
   const formatter = () => {
@@ -29,7 +35,7 @@ const Home = ({ player, setUserData, scale }) => {
   const addUserNickname = () => {
     if (textField.value) {
       setTextField({ ...textField, error: false });
-      setUserData(textField.value);
+      setUserData({ ...player, nickname: textField.value });
     } else {
       setTextField({ ...textField, error: true });
     }
@@ -43,8 +49,34 @@ const Home = ({ player, setUserData, scale }) => {
         </Title>
         {player.nickname ? (
           <>
-            <NickName>Cześć {player.nickname}!</NickName>
-            <Button variant='StartGameBtn' onClick={goToSelectLevel} />
+            <Text>Gracz: {player.nickname}</Text>
+            <Text>Postęp: {progress}/6</Text>
+            <Navigation>
+              <Button
+                variant='rectangle'
+                image={rectangleBtn}
+                hoverImage={rectangleBtnHover}
+                onClick={goToSelectLevel}
+              >
+                START
+              </Button>
+              <Button
+                variant='rectangle'
+                image={rectangleBtn}
+                hoverImage={rectangleBtnHover}
+                onClick={resetData}
+              >
+                RESET
+              </Button>
+              <Button
+                variant='rectangle'
+                image={rectangleBtn}
+                hoverImage={rectangleBtnHover}
+                onClick={goToScores}
+              >
+                WYNIKI
+              </Button>
+            </Navigation>
           </>
         ) : (
           <>
@@ -58,7 +90,14 @@ const Home = ({ player, setUserData, scale }) => {
               }
               onBlur={formatter}
             />
-            <Button variant='AddBtn' onClick={addUserNickname} />
+            <Button
+              variant='rectangle'
+              image={rectangleBtn}
+              hoverImage={rectangleBtnHover}
+              onClick={addUserNickname}
+            >
+              OK
+            </Button>
           </>
         )}
       </Wrapper>
@@ -100,6 +139,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const Navigation = styled.div`
+  display: flex;
+`;
+
 const Title = styled.h1`
   font-size: 80px;
   letter-spacing: 1px;
@@ -108,12 +151,6 @@ const Title = styled.h1`
   span {
     color: #94bd00;
   }
-`;
-
-const NickName = styled.h2`
-  font-size: 50px;
-  color: #af753b;
-  text-shadow: 0px 0px 2px black;
 `;
 
 const Input = styled.input`
@@ -136,48 +173,9 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
-  width: ${({ variant }) => {
-    switch (true) {
-      case variant === "AddBtn":
-        return "88px";
-      case variant === "StartGameBtn":
-        return "363px";
-    }
-  }};
-  height: ${({ variant }) => {
-    switch (true) {
-      case variant === "AddBtn":
-        return "88px";
-      case variant === "StartGameBtn":
-        return "178px";
-    }
-  }};
-  background-color: transparent;
-  background-image: ${({ variant }) => {
-    switch (true) {
-      case variant === "AddBtn":
-        return `url(${AddBtn})`;
-      case variant === "StartGameBtn":
-        return `url(${StartGameBtn})`;
-    }
-  }};
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  transition: background-image 0.2s linear;
-  :hover,
-  :focus {
-    outline: none;
-    background-image: ${({ variant }) => {
-      switch (true) {
-        case variant === "AddBtn":
-          return `url(${AddBtnHover})`;
-        case variant === "StartGameBtn":
-          return `url(${StartGameBtnHover})`;
-      }
-    }};
-  }
+const Text = styled.p`
+  font-size: 24px;
+  font-weight: 500;
+  color: #af753b;
+  text-shadow: 0px 0px 1px black;
 `;
