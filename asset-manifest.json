@@ -1,26 +1,24 @@
 {
   "files": {
-    "main.js": "/React-Memory-Game/static/js/main.cbd05059.chunk.js",
-    "main.js.map": "/React-Memory-Game/static/js/main.cbd05059.chunk.js.map",
+    "main.js": "/React-Memory-Game/static/js/main.370e7702.chunk.js",
+    "main.js.map": "/React-Memory-Game/static/js/main.370e7702.chunk.js.map",
     "runtime-main.js": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js",
     "runtime-main.js.map": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js.map",
-    "static/js/2.2f488a50.chunk.js": "/React-Memory-Game/static/js/2.2f488a50.chunk.js",
-    "static/js/2.2f488a50.chunk.js.map": "/React-Memory-Game/static/js/2.2f488a50.chunk.js.map",
+    "static/js/2.311226ca.chunk.js": "/React-Memory-Game/static/js/2.311226ca.chunk.js",
+    "static/js/2.311226ca.chunk.js.map": "/React-Memory-Game/static/js/2.311226ca.chunk.js.map",
     "index.html": "/React-Memory-Game/index.html",
-    "static/js/2.2f488a50.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.2f488a50.chunk.js.LICENSE.txt",
-    "static/media/button-plus-hover.bf7fe888.png": "/React-Memory-Game/static/media/button-plus-hover.bf7fe888.png",
-    "static/media/button-plus.38f15a9f.png": "/React-Memory-Game/static/media/button-plus.38f15a9f.png",
-    "static/media/button-start-hover.867264d5.png": "/React-Memory-Game/static/media/button-start-hover.867264d5.png",
-    "static/media/button-start.6ff5d47d.png": "/React-Memory-Game/static/media/button-start.6ff5d47d.png",
-    "static/media/levelicon.c089b3bb.png": "/React-Memory-Game/static/media/levelicon.c089b3bb.png",
-    "static/media/leveliconhover.2e9da042.png": "/React-Memory-Game/static/media/leveliconhover.2e9da042.png",
+    "static/js/2.311226ca.chunk.js.LICENSE.txt": "/React-Memory-Game/static/js/2.311226ca.chunk.js.LICENSE.txt",
     "static/media/levelselectscreen.a4eb90f8.png": "/React-Memory-Game/static/media/levelselectscreen.a4eb90f8.png",
+    "static/media/rectangleBtn.197dcec7.png": "/React-Memory-Game/static/media/rectangleBtn.197dcec7.png",
+    "static/media/rectangleBtnHover.857a97a4.png": "/React-Memory-Game/static/media/rectangleBtnHover.857a97a4.png",
     "static/media/result-screen-win.feff81c6.png": "/React-Memory-Game/static/media/result-screen-win.feff81c6.png",
+    "static/media/squareBtn.c089b3bb.png": "/React-Memory-Game/static/media/squareBtn.c089b3bb.png",
+    "static/media/squareBtnHover.2e9da042.png": "/React-Memory-Game/static/media/squareBtnHover.2e9da042.png",
     "static/media/title.c26b316f.png": "/React-Memory-Game/static/media/title.c26b316f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e9a1fa2d.js",
-    "static/js/2.2f488a50.chunk.js",
-    "static/js/main.cbd05059.chunk.js"
+    "static/js/2.311226ca.chunk.js",
+    "static/js/main.370e7702.chunk.js"
   ]
 }
