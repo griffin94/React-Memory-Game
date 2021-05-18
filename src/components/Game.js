@@ -145,8 +145,8 @@ function Game() {
       ))}
       {gameEnd && (
         <Modal
-          width={612}
-          height={884}
+          width={712}
+          height={984}
           level={level}
           score={playTime.current.score}
         />
