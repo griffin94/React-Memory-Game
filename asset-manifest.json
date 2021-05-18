@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/React-Memory-Game/static/js/main.24302882.chunk.js",
-    "main.js.map": "/React-Memory-Game/static/js/main.24302882.chunk.js.map",
+    "main.js": "/React-Memory-Game/static/js/main.d932904c.chunk.js",
+    "main.js.map": "/React-Memory-Game/static/js/main.d932904c.chunk.js.map",
     "runtime-main.js": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js",
     "runtime-main.js.map": "/React-Memory-Game/static/js/runtime-main.e9a1fa2d.js.map",
     "static/js/2.787d90ec.chunk.js": "/React-Memory-Game/static/js/2.787d90ec.chunk.js",
@@ -19,6 +19,6 @@
   "entrypoints": [
     "static/js/runtime-main.e9a1fa2d.js",
     "static/js/2.787d90ec.chunk.js",
-    "static/js/main.24302882.chunk.js"
+    "static/js/main.d932904c.chunk.js"
   ]
 }
