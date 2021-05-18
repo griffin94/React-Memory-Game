@@ -5,6 +5,7 @@ import Home from "./Home";
 import Game from "./Game";
 import SelectLevel from "./SelectLevel";
 import Scores from "./Scores";
+import NotFound from "./NotFound";
 
 export const PlayerContext = React.createContext();
 
@@ -71,17 +72,20 @@ const App = () => {
       <Router>
         <GlobalStyle />
         <Switch>
+          <Route path='/levels'>
+            <SelectLevel player={player} width={1273} height={716} />
+          </Route>
+          <Route path='/game/:level'>
+            <Game />
+          </Route>
+          <Route path='/scores'>
+            <Scores width={1273} height={716} />
+          </Route>
           <Route exact path='/'>
             <Home width={1273} height={716} />
           </Route>
-          <Route exact path='/levels'>
-            <SelectLevel player={player} width={1273} height={716} />
-          </Route>
-          <Route exact path='/game/:level'>
-            <Game />
-          </Route>
-          <Route exact path='/scores'>
-            <Scores width={1273} height={716} />
+          <Route>
+            <NotFound width={1273} height={716} />
           </Route>
         </Switch>
       </Router>
